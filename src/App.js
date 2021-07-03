@@ -1,5 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.css';
 import apiTheMovieDb from './services/apiTheMovieDb';
 
@@ -16,9 +18,7 @@ function App() {
     if (response.data) {
       setMovies(response.data.results);
     }
-
     console.log(movies)
-
   }
 
   useEffect(() => {
@@ -32,17 +32,31 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <div class="row">
-        {movies.map(item => (
-          <div class="col-lg-3">
-            <div class="image">
-              <img src={defaultPath + item.poster_path}/>
-            </div>
-            <span>{item.title}</span>
-          </div>
-        ))}
-      </div>
       </header>
+      <div class="container">
+        <div class="row">
+          {movies.map(item => (
+            <div class="col-sm-12 col-md-6 col-lg-12 d-flex py-3">
+              <div class="col-lg-2 position-relative image">
+                <img class="img-fluid" src={defaultPath + item.poster_path}/>
+                { item.vote_average !== 0 && (
+                  <>
+                    <span class="review-label d-flex justify-content-between align-items-center">
+                      <FontAwesomeIcon icon={faStar}/>
+                      { item.vote_average.toFixed(1) }
+                    </span>
+                  </>
+                )}
+              </div>
+              <div className="col-lg-10 movie-thumb">
+                <h3>{item.title}</h3>
+                <span class="d-block"><b>Sinopse</b>: {item.overview}</span>
+                <span class="d-block"><b>Data de Lançamento</b>: {item.release_date}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
