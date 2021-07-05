@@ -8,6 +8,7 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #0d1117;
 }
 /*IMAGE*/
 .image {
@@ -39,3 +40,15 @@ body {
   fill: #ffd700;
 }
 /*LABEL*/
+/*MOVIE PAGE*/
+.movie-subtitle {
+  font-weight: 700;
+  font-style: italic;
+}
+.custom-spaces {
+  font-weight: 400;
+}
+.custom-spaces:not(:last-child):after {
+  content: ', ';
+}
+/*MOVIE PAGE*/
