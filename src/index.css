@@ -10,6 +10,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #0d1117;
 }
+.App {
+  background-color: #0d1117
+}
 /*IMAGE*/
 .image {
   transition: .3s all ease;
@@ -50,5 +53,11 @@ body {
 }
 .custom-spaces:not(:last-child):after {
   content: ', ';
+}
+.back-btn {
+  color: #000;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  font-weight: 500 !important;
 }
 /*MOVIE PAGE*/
