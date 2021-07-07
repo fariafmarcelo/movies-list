@@ -18,15 +18,21 @@ function App() {
 
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState(searchData);
+  const [totalResults, setTotalResults] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
   const defaultPath = 'https://image.tmdb.org/t/p/w300';
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   async function getDataFromApi() {
 
-    const response = await apiTheMovieDb.get(`/movie/upcoming?api_key=${API_KEY}&language=pt-BR&page=1`);
+    const response = await apiTheMovieDb.get(`/movie/upcoming?api_key=${API_KEY}&language=pt-BR&page=${currentPage}`);
 
     if (response.data) {
+      setTotalResults(response.data.total_results);
       setMovies(response.data.results);
+      setTotalPages(response.data.total_pages);
     }
 
   }
@@ -46,6 +52,22 @@ function App() {
         setMovies(searchResponse.data.results);
       }
 
+    }
+  }
+
+  function nextPage() {
+    if (currentPage < totalPages ) {
+      let page = currentPage + 1;
+      setCurrentPage(page);
+      getDataFromApi();
+    }
+  }
+
+  function previousPage() {
+    if (currentPage > 1) {
+      let page = currentPage - 1;
+      setCurrentPage(page);
+      getDataFromApi();
     }
   }
 
@@ -78,6 +100,10 @@ function App() {
             </div>
         </div>
       </nav>
+      <button className="btn btn-default" onClick={previousPage}>Anterior</button>
+      {currentPage}
+      <button className="btn btn-default" onClick={nextPage}>Próxima</button>
+      Resultados: {totalResults}
       <div className="container">
         <div className="row">
           {movies.map(item => (
@@ -99,6 +125,7 @@ function App() {
               )}
             </>
           ))}
+
           { !movies.length && (
             <div className="text-center py-5">
               <h3>Nenhum filme encontrado, por favor verifique a busca e tente novamente</h3>
