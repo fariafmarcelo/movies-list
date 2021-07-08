@@ -8,11 +8,18 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0d1117;
+  background: #0d1117 !important;
 }
 .App {
-  background-color: #0d1117
+  background-color: #0d1117;
 }
+/*CUSTOM*/
+@media only screen and (min-width: 992px) {
+  .ml-lg-auto {
+    margin-left: auto !important;
+  }
+}
+/*CUSTOM*/
 /*IMAGE*/
 .image {
   transition: .3s all ease;
@@ -61,3 +68,19 @@ body {
   font-weight: 500 !important;
 }
 /*MOVIE PAGE*/
+/*SEARCH*/
+#search {
+  background-color: #000;
+    opacity: .3;
+    border: 0 !important;
+    border-bottom: 1px solid #fff !important;
+    border-radius: .25rem .25rem 0 0;
+    padding: .5rem;
+    color: #fff;
+}
+@media only screen and (max-width: 991px) {
+  #search {
+    width: 100%;
+  }
+}
+/*SEARCH*/
