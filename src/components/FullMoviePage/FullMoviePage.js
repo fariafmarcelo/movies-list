@@ -10,21 +10,23 @@ import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const MasterContainer = styled.div`
-  background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.97) 10%,
-      rgba(0, 0, 0, 0.92) 20%,
-      rgba(0, 0, 0, 0.92) 80%,
-      rgba(0, 0, 0, 0.97) 100%
-    ),
-    no-repeat center center url(${(props) => props.posterPath});
-  background-size: cover;
-  height: 100vh;
-  font-size: 1rem;
-  color: white;
-  display: flex;
-  background-color: #2c3949;
-  align-items: center;
+    @media only screen and (min-width: 992px) {
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.97) 10%,
+            rgba(0, 0, 0, 0.92) 20%,
+            rgba(0, 0, 0, 0.92) 80%,
+            rgba(0, 0, 0, 0.97) 100%
+            ),
+            no-repeat center center url(${(props) => props.posterPath});
+        background-size: cover;
+        height: 100vh;
+        font-size: 1rem;
+        display: flex;
+        background-color: #2c3949;
+        align-items: center;
+    }
+    color: #fff;
 `;
 
 
@@ -63,9 +65,9 @@ export default function FullMoviePage() {
                         <img src={bannerPath + movie.poster_path} />
                         <span className="movie-subtitle my-3">{movie.tagline}</span>
                     </div>
-                    <div className="col-lg-9 position-relative  d-flex flex-wrap align-items-end">
+                    <div className="col-lg-9 position-relative d-flex flex-wrap align-items-end">
                         <div className="bottom-0 flex-column d-flex flex-wrap justify-content-end">
-                            <h3 className="mb-2"><i>{movie.title}</i></h3>
+                            <h3 className="mb-2 mt-sm-4 mt-lg-0 text-sm-center text-lg-left"><i>{movie.title}</i></h3>
                             {/* { movie.genres !== 0 && (
                                 <>
                                     <div className="genres d-block mb-4">
@@ -75,30 +77,30 @@ export default function FullMoviePage() {
                                     </div>
                                 </>
                             )} */}
-                            <div className="movie-description mb-4">
+                            <div className="movie-description text-sm-center text-lg-left mb-4">
                                 {movie.overview}
                             </div>
                             <div className="row">
                                 { movie.runtime !== 0 && (
-                                    <div className="col text-center">
+                                    <div className="col-sm-6 col-md-3 mt-sm-4 mt-lg-0 text-center">
                                         <span className="d-block" style={{fontStyle: "italic", fontWeight: "700"}}>Tempo de Duração:</span>
                                         <span className="d-block">{movie.runtime}m</span>
                                     </div>
                                 )}
                                 { movie.release_date !== 0 && (
-                                    <div className="col text-center">
+                                    <div className="col-sm-6 col-md-3 mt-sm-4 mt-lg-0 text-center">
                                         <span className="d-block" style={{fontStyle: "italic", fontWeight: "700"}}>Data de Lançamento:</span>
                                         <span className="d-block">{moment(`${movie.release_date}`).format("D/M/YYYY")}</span>
                                     </div>
                                 )}
                                 { movie.original_language !== 0 && (
-                                    <div className="col text-center">
+                                    <div className="col-sm-6 col-md-3 mt-sm-4 mt-lg-0 text-center">
                                         <span className="d-block" style={{fontStyle: "italic", fontWeight: "700"}}>Áudio Original:</span>
                                         <span className="d-block text-uppercase">{movie.original_language}</span>
                                     </div>
                                 )}
                                 { movie.vote_average !== 0 && (
-                                    <div className="col text-center">
+                                    <div className="col-sm-6 col-md-3 mt-sm-4 mt-lg-0 text-center">
                                         <span className="d-block" style={{fontStyle: "italic", fontWeight: "700"}}>Classificação:</span>
                                         <span className="d-block">{movie.vote_average}</span>
                                     </div>
@@ -106,7 +108,7 @@ export default function FullMoviePage() {
                             </div>
                         </div>
                     </div>
-                    <Link to='/' className="btn btn-light back-btn text-center mt-5 text-center">
+                    <Link to='/' className="btn btn-light back-btn text-center mt-5 text-center mb-sm-5 mb-lg-0">
                         Voltar para página inicial
                     </Link>
                 </div>
