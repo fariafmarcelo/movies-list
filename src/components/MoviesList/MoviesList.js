@@ -15,6 +15,7 @@ const searchData = {
 };
 
 function App() {
+
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState(searchData);
     const [currentPage, setCurrentPage] = useState(1);
@@ -54,7 +55,7 @@ function App() {
     }
 
     function nextPage() {
-        if (currentPage < totalPages ) {
+        if ( currentPage < totalPages ) {
             let page = currentPage + 1;
             setCurrentPage(page);
         }
@@ -69,6 +70,7 @@ function App() {
 
     useEffect(() => {
         getDataFromApi();
+        window.scrollTo(0, 0);
     }, [currentPage]);
 
     useEffect(() => {
@@ -129,6 +131,16 @@ function App() {
                             <li className="page-item">
                                 <span className="page-link">
                                     {currentPage}
+                                </span>
+                            </li>
+                            <li className="page-item">
+                                <span className="page-link">
+                                    ...
+                                </span>
+                            </li>
+                            <li className="page-item">
+                                <span className="page-link">
+                                    {totalPages}
                                 </span>
                             </li>
                             <li className="page-item">
