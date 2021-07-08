@@ -61,13 +61,13 @@ export default function FullMoviePage() {
         <MasterContainer posterPath={defaultPath + movie.backdrop_path}>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-3 d-flex flex-wrap justify-content-center align-items-center">
+                    <div className="col-lg-3 d-flex flex-wrap justify-content-center align-items-center mt-4 mt-lg-0">
                         <img src={bannerPath + movie.poster_path} />
                         <span className="movie-subtitle my-3">{movie.tagline}</span>
                     </div>
                     <div className="col-lg-9 position-relative d-flex flex-wrap align-items-end">
                         <div className="bottom-0 flex-column d-flex flex-wrap justify-content-end">
-                            <h3 className="mb-2 mt-sm-4 mt-lg-0 text-sm-center text-lg-start"><i>{movie.title}</i></h3>
+                            <h3 className="mb-2 mt-4 mt-lg-0 text-center text-lg-start"><i>{movie.title}</i></h3>
                             {/* { movie.genres !== 0 && (
                                 <>
                                     <div className="genres d-block mb-4">
